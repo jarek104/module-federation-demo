@@ -27,6 +27,13 @@
     ]
   },
   "projects": {
+    "feature": {
+      "tags": []
+    },
+    "feature-e2e": {
+      "tags": [],
+      "implicitDependencies": ["feature"]
+    },
     "shell": {
       "tags": []
     },
