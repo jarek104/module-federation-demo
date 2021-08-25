@@ -8,8 +8,10 @@
       "prefix": "module-federation-demo",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "builder": "ngx-build-plus:browser",
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/feature",
             "index": "apps/feature/src/index.html",
@@ -21,8 +23,12 @@
               "apps/feature/src/favicon.ico",
               "apps/feature/src/assets"
             ],
-            "styles": ["apps/feature/src/styles.scss"],
-            "scripts": []
+            "styles": [
+              "apps/feature/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/feature/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -44,7 +50,8 @@
                   "with": "apps/feature/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "apps/feature/webpack.prod.config.js"
             },
             "development": {
               "buildOptimizer": false,
@@ -58,21 +65,27 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "feature:build:production"
+              "browserTarget": "feature:build:production",
+              "extraWebpackConfig": "apps/feature/webpack.prod.config.js"
             },
             "development": {
               "browserTarget": "feature:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "apps/feature/webpack.config.js",
+            "port": 4201
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "feature:build"
+            "browserTarget": "feature:build",
+            "extraWebpackConfig": "apps/feature/webpack.config.js"
           }
         },
         "lint": {
@@ -85,11 +98,14 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/feature"],
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/feature"
+          ],
           "options": {
             "jestConfig": "apps/feature/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/feature/webpack.config.js"
           }
         }
       }
@@ -115,7 +131,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/feature-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/feature-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -127,8 +145,10 @@
       "prefix": "module-federation-demo",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "builder": "ngx-build-plus:browser",
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/shell",
             "index": "apps/shell/src/index.html",
@@ -136,9 +156,16 @@
             "polyfills": "apps/shell/src/polyfills.ts",
             "tsConfig": "apps/shell/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
-            "styles": ["apps/shell/src/styles.scss"],
-            "scripts": []
+            "assets": [
+              "apps/shell/src/favicon.ico",
+              "apps/shell/src/assets"
+            ],
+            "styles": [
+              "apps/shell/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/shell/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -160,7 +187,8 @@
                   "with": "apps/shell/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             },
             "development": {
               "buildOptimizer": false,
@@ -174,21 +202,27 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "shell:build:production"
+              "browserTarget": "shell:build:production",
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             },
             "development": {
               "browserTarget": "shell:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "apps/shell/webpack.config.js",
+            "port": 4200
+          }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "shell:build"
+            "browserTarget": "shell:build",
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           }
         },
         "lint": {
@@ -201,11 +235,14 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/shell"],
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/shell"
+          ],
           "options": {
             "jestConfig": "apps/shell/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           }
         }
       }
@@ -231,7 +268,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/shell-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/shell-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }

@@ -6,7 +6,9 @@
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "nx": "nx",
-    "start": "ng serve",
+    "start:shell": "ng serve shell -o --port 4200",
+    "start:feature": "ng serve feature -o --port 4201",
+    "start:all": "concurrently \"npm run start:shell\" \"npm run start:feature\" ",
     "build": "ng build",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
@@ -25,10 +27,12 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation": "^12.3.0-beta.3",
     "@angular/animations": "^12.1.0",
     "@angular/common": "^12.1.0",
     "@angular/compiler": "^12.1.0",
