@@ -23,23 +23,19 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      
-        // For remotes (please adjust)
-        name: "feature",
-        filename: "remoteEntry.js",
-        exposes: {
-            './Module': './apps/feature/src/app/app.module.ts',
-        },        
-        
+      name: "feature",
+      filename: "remoteEntry.js",
+      exposes: {
+          './Module': './apps/feature/src/app/app.module.ts',
+      },        
+      shared: share({
+        "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+        "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+        "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+        "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
-          ...sharedMappings.getDescriptors()
-        })
+        ...sharedMappings.getDescriptors()
+      })
         
     }),
     sharedMappings.getPlugin()

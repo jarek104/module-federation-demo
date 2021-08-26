@@ -1,17 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { RemoteModule } from './types';
 
-const initialData: RemoteModule[] = [{
-  export: 'mockViewer',
-  url: 'http://localhost:4201/remoteEntry.js',
-  title: 'Document Viewer',
-  description: 'Let\'s all pretend this is a viewer',
-}, {
-  export: 'mockContentList',
-  url: 'http://localhost:4201/remoteEntry.js',
-  title: 'Content List',
-  description: 'Let\'s all pretend this is a content list',
-}];
+const initialData: RemoteModule[] = [
+  {
+    remoteEntry: 'http://localhost:4201/remoteEntry.js',
+    remoteName: 'feature',
+    exposedModule: './Module',
+    displayName: 'Feature One Module',
+    routePath: 'feature',
+    ngModuleName: 'AppModule'
+  },
+  {
+    remoteEntry: 'http://localhost:4203/remoteEntry.js',
+    remoteName: 'feature_two',
+    exposedModule: './Module',
+    displayName: 'Feature Two Module',
+    routePath: 'feature_two',
+    ngModuleName: 'AppModule'
+  }
+];
 
 @Injectable()
 export class AppService {

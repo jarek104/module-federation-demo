@@ -1,6 +1,11 @@
 export interface RemoteModule {
-  url: string;
-  export: string;
-  title: string;
-  description: string;
-}
+  // for loading
+  remoteEntry: string;
+  remoteName: string;
+  exposedModule: string;
+  
+  // for routing
+  displayName: string;
+  routePath: string;
+  ngModuleName: string;
+};

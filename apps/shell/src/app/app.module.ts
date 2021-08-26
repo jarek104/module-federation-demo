@@ -10,26 +10,16 @@ import { HomeViewComponent } from './home-view/home-view.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-const routes: Routes = [
+export const APP_ROUTES: Routes = [
   {
     path: '',
     component: HomeViewComponent,
-  },
-  {
-    path: 'feature',
-    loadChildren: () =>
-      loadRemoteModule({
-        remoteEntry: 'http://localhost:4201/remoteEntry.js',
-        remoteName: 'feature',
-        exposedModule: './Module'
-      })
-      .then(m => m.AppModule)
   },
 ];
 
 @NgModule({
   declarations: [AppComponent, ModuleListComponent, ModuleSelectorComponent, HomeViewComponent],
-  imports: [BrowserModule, CommonModule, RouterModule.forRoot(routes), HttpClientModule],
+  imports: [BrowserModule, CommonModule, RouterModule.forRoot(APP_ROUTES), HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

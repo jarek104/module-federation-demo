@@ -1,5 +1,6 @@
 <ul>
+  <li><a routerLink="/">Home View</a></li>
   <li *ngFor='let module of modules'>
-    <b>{{ module.title }}</b> - {{ module.description }}
+    <a [routerLink]="module.routePath">{{module.displayName}}</a>
   </li>
 </ul>

@@ -104,28 +104,102 @@
         }
       }
     },
-    "feature-e2e": {
-      "root": "apps/feature-e2e",
-      "sourceRoot": "apps/feature-e2e/src",
+    "feature-two": {
       "projectType": "application",
+      "root": "apps/feature-two",
+      "sourceRoot": "apps/feature-two/src",
+      "prefix": "module-federation-demo",
       "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+        "build": {
+          "builder": "@nrwl/angular:webpack-browser",
+          "outputs": ["{options.outputPath}"],
           "options": {
-            "cypressConfig": "apps/feature-e2e/cypress.json",
-            "tsConfig": "apps/feature-e2e/tsconfig.e2e.json",
-            "devServerTarget": "feature:serve:development"
+            "outputPath": "dist/apps/feature-two",
+            "index": "apps/feature-two/src/index.html",
+            "main": "apps/feature-two/src/main.ts",
+            "polyfills": "apps/feature-two/src/polyfills.ts",
+            "tsConfig": "apps/feature-two/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/feature-two/src/favicon.ico",
+              "apps/feature-two/src/assets"
+            ],
+            "styles": ["apps/feature-two/src/styles.scss"],
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "apps/feature-two/webpack.config.js"
+            }
           },
           "configurations": {
             "production": {
-              "devServerTarget": "feature:serve:production"
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/feature-two/src/environments/environment.ts",
+                  "with": "apps/feature-two/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/feature-two/webpack.prod.config.js"
+              }
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@nrwl/angular:webpack-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "feature-two:build:production"
+            },
+            "development": {
+              "browserTarget": "feature-two:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {}
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "feature-two:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/feature-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/feature-two/src/**/*.ts",
+              "apps/feature-two/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/feature-two"],
+          "options": {
+            "jestConfig": "apps/feature-two/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
@@ -276,32 +350,6 @@
             "jestConfig": "apps/shell/jest.config.js",
             "passWithNoTests": true,
             "extraWebpackConfig": "apps/shell/webpack.config.js"
-          }
-        }
-      }
-    },
-    "shell-e2e": {
-      "root": "apps/shell-e2e",
-      "sourceRoot": "apps/shell-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/shell-e2e/cypress.json",
-            "tsConfig": "apps/shell-e2e/tsconfig.e2e.json",
-            "devServerTarget": "shell:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "shell:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/shell-e2e/**/*.{js,ts}"]
           }
         }
       }

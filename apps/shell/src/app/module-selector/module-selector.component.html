@@ -1,6 +1,7 @@
 <ul>
   <li *ngFor='let module of modules'>
     <input type='checkbox' />
-    <b>{{ module.title }}</b> - {{ module.description }}
+    <b>{{ module | json}}</b>
+    <!-- <b>{{ module.title }}</b> - {{ module.description }} -->
   </li>
 </ul>

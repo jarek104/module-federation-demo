@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RemoteModule } from '../remote-module-registry.service';
+import { Microfrontend } from '../remote-module-registry.service';
 
 @Component({
   selector: 'mfd-module-selector',
@@ -9,5 +9,5 @@ import { RemoteModule } from '../remote-module-registry.service';
 export class ModuleSelectorComponent {
 
   @Input()
-  modules: RemoteModule[] = [];
+  modules: Microfrontend[] = [];
 }
