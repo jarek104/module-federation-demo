@@ -1,0 +1,9 @@
+<mfd-module-selector *ngIf='_editing; else list'
+  [modules]='_modules$ | async'
+></mfd-module-selector>
+
+<ng-template #list>
+  <mfd-module-list
+    [modules]='_modules$ | async'
+  ></mfd-module-list>
+</ng-template>

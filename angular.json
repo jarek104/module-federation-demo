@@ -5,13 +5,11 @@
       "projectType": "application",
       "root": "apps/feature",
       "sourceRoot": "apps/feature/src",
-      "prefix": "module-federation-demo",
+      "prefix": "feat",
       "architect": {
         "build": {
           "builder": "ngx-build-plus:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/feature",
             "index": "apps/feature/src/index.html",
@@ -23,9 +21,7 @@
               "apps/feature/src/favicon.ico",
               "apps/feature/src/assets"
             ],
-            "styles": [
-              "apps/feature/src/styles.scss"
-            ],
+            "styles": ["apps/feature/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/feature/webpack.config.js",
             "commonChunk": false
@@ -99,9 +95,7 @@
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/feature"
-          ],
+          "outputs": ["coverage/apps/feature"],
           "options": {
             "jestConfig": "apps/feature/jest.config.js",
             "passWithNoTests": true,
@@ -131,9 +125,57 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/feature-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/feature-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "registry-api": {
+      "root": "apps/registry-api",
+      "sourceRoot": "apps/registry-api/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/registry-api",
+            "main": "apps/registry-api/src/main.ts",
+            "tsConfig": "apps/registry-api/tsconfig.app.json",
+            "assets": ["apps/registry-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/registry-api/src/environments/environment.ts",
+                  "with": "apps/registry-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "registry-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/registry-api/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/registry-api"],
+          "options": {
+            "jestConfig": "apps/registry-api/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
@@ -142,13 +184,11 @@
       "projectType": "application",
       "root": "apps/shell",
       "sourceRoot": "apps/shell/src",
-      "prefix": "module-federation-demo",
+      "prefix": "mfd",
       "architect": {
         "build": {
           "builder": "ngx-build-plus:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/shell",
             "index": "apps/shell/src/index.html",
@@ -156,13 +196,8 @@
             "polyfills": "apps/shell/src/polyfills.ts",
             "tsConfig": "apps/shell/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/shell/src/favicon.ico",
-              "apps/shell/src/assets"
-            ],
-            "styles": [
-              "apps/shell/src/styles.scss"
-            ],
+            "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
+            "styles": ["apps/shell/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/shell/webpack.config.js",
             "commonChunk": false
@@ -236,9 +271,7 @@
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/shell"
-          ],
+          "outputs": ["coverage/apps/shell"],
           "options": {
             "jestConfig": "apps/shell/jest.config.js",
             "passWithNoTests": true,
@@ -268,9 +301,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/shell-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/shell-e2e/**/*.{js,ts}"]
           }
         }
       }

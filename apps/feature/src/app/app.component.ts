@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'module-federation-demo-root',
+  selector: 'feat-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
