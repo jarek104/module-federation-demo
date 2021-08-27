@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ChildComponent } from './child.component';
+import { WidgetComponent } from './widget/widget.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent, pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   declarations: [
     AppComponent, 
     ChildComponent,
+    WidgetComponent
   ],
   imports: [
     BrowserModule,

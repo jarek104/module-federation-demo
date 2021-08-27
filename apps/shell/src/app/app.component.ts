@@ -23,8 +23,6 @@ export class AppComponent {
   ngOnInit() {
     this.registryService.getRemoteModules().subscribe(modules => {
       const routes = this.buildRoutes(modules);
-      console.log(routes);
-
       this.router.resetConfig(routes);
     });
 

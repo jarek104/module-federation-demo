@@ -25,7 +25,6 @@ export class RemoteModuleRegistryService {
   getRemoteModules(): Observable<Microfrontend[]> {
     return this.http.get<Microfrontend[]>(registryApiUrl).pipe(
       map(modules => modules || []),
-      // startWith([]),
     );
   }
 }

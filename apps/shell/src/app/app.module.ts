@@ -9,17 +9,24 @@ import { ModuleSelectorComponent } from './module-selector/module-selector.compo
 import { HomeViewComponent } from './home-view/home-view.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from './material.module';
+import { DashboardViewComponent } from './dashboard-view/dashboard-view.component';
+import { WidgetHostComponent } from './dashboard-view/widget-host/widget-host.component';
 
 export const APP_ROUTES: Routes = [
   {
     path: '',
     component: HomeViewComponent,
   },
+  {
+    path: 'dashboard',
+    component: DashboardViewComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [AppComponent, ModuleListComponent, ModuleSelectorComponent, HomeViewComponent],
-  imports: [BrowserModule, CommonModule, RouterModule.forRoot(APP_ROUTES), HttpClientModule],
+  declarations: [AppComponent, ModuleListComponent, ModuleSelectorComponent, HomeViewComponent, DashboardViewComponent, WidgetHostComponent],
+  imports: [BrowserModule, CommonModule, RouterModule.forRoot(APP_ROUTES), HttpClientModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 })

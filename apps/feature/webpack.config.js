@@ -27,6 +27,7 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
           './Module': './apps/feature/src/app/app.module.ts',
+          './WidgetComponent': './apps/feature/src/app/widget/widget.component.ts',
       },        
       shared: share({
         "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 

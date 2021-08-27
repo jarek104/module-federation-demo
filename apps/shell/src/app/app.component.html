@@ -1,12 +1,17 @@
-<h1>SHELL</h1>
+<mat-toolbar class="mat-elevation-z3">
+  <mat-toolbar-row>
+    <span>SHELL</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
 
-<mfd-module-selector *ngIf='_editing; else list' [modules]='_modules$ | async'></mfd-module-selector>
+  <mat-toolbar-row>
+    <div routerLink="dashboard" class="app-link-button" routerLinkActive="active">Dashboards</div>
+    <div *ngFor='let module of _modules$ | async' [routerLink]="module.routePath" class="app-link-button" routerLinkActive="active">{{module.displayName}}</div>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<ng-template #list>
-  <mfd-module-list [modules]='_modules$ | async'></mfd-module-list>
-</ng-template>
 
-<div style="border: 1px solid green">
-  Shell's Router Outlet
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
