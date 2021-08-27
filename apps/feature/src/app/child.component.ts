@@ -4,15 +4,14 @@ import { Component } from '@angular/core';
   selector: 'child-component',
   template: `
     <h1>Feature's child route</h1>
-    <ul>
-      <li><a routerLink="../">Go back to children's home route</a></li>
-    </ul>
+    <a routerLink="../">Go back to children's home route</a>
   `,
   styles: [`
-  :host {
+    :host {
     display: block;
-    margin: 20px;
-    border: 1px solid lightblue;
+    height: 100%;
+    padding: 50px;
+    background:  lightblue;
   }
   h1 {
     text-align: center;

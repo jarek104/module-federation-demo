@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z3">
+<mat-toolbar class="mat-elevation-z3" style="position: relative;">
   <mat-toolbar-row>
     <span>SHELL</span>
     <span class="example-spacer"></span>
@@ -13,5 +13,6 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-
-<router-outlet></router-outlet>
+<div style="flex-grow: 1; display: flex; flex-direction: column;">
+  <router-outlet></router-outlet>
+</div>

@@ -24,7 +24,7 @@ export class WidgetHostComponent implements OnInit {
       exposedModule: this.exposedModule,
     });
     this.vcref.createComponent(
-      this.cfr.resolveComponentFactory(remoteModule[this.exposedModule.replace('./', '')])
+      this.cfr.resolveComponentFactory(remoteModule[this.exposedModule.match(/[^\/]+$/)[0]])
     );
   }
 }
