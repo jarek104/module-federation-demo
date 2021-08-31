@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { DashboardViewComponent } from './dashboard-view/dashboard-view.component';
 import { WidgetHostComponent } from './dashboard-view/widget-host/widget-host.component';
+import { ShellAuthService } from '@mfd/shell-services';
 
 export const APP_ROUTES: Routes = [
   {
@@ -27,7 +28,7 @@ export const APP_ROUTES: Routes = [
 @NgModule({
   declarations: [AppComponent, ModuleListComponent, ModuleSelectorComponent, HomeViewComponent, DashboardViewComponent, WidgetHostComponent],
   imports: [BrowserModule, CommonModule, RouterModule.forRoot(APP_ROUTES), HttpClientModule, MaterialModule],
-  providers: [],
+  providers: [ShellAuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
