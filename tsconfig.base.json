@@ -15,7 +15,11 @@
     "skipDefaultLibCheck": true,
     "strictNullChecks": false,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@mfd/shell-services": [
+        "libs/shell-services/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

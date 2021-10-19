@@ -1,8 +1,5 @@
-import { loadRemoteModule } from '@angular-architects/module-federation';
-import { Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewContainerRef } from '@angular/core';
-import { Router, Routes } from '@angular/router';
-import { APP_ROUTES } from '../app.module';
-import { Microfrontend, RemoteModuleRegistryService } from '../remote-module-registry.service';
+import { Component } from '@angular/core';
+import { ShellAuthService } from '@mfd/shell-services';
 
 @Component({
   selector: 'mfd-dashboard-view',
@@ -10,6 +7,13 @@ import { Microfrontend, RemoteModuleRegistryService } from '../remote-module-reg
   styleUrls: ['./dashboard-view.component.scss']
 })
 export class DashboardViewComponent {
-  
+  constructor(public auth: ShellAuthService) {
+    console.log(auth.token);
+  }
+
+  doStuff() {
+    this.auth.token = this.auth.token + 1;
+  }
+
 
 }

@@ -38,6 +38,9 @@
     },
     "shell": {
       "tags": []
+    },
+    "shell-services": {
+      "tags": []
     }
   }
 }
