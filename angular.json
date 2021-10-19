@@ -353,6 +353,31 @@
           }
         }
       }
+    },
+    "shell-services": {
+      "projectType": "library",
+      "root": "libs/shell-services",
+      "sourceRoot": "libs/shell-services/src",
+      "prefix": "module-federation-demo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shell-services"],
+          "options": {
+            "jestConfig": "libs/shell-services/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shell-services/src/**/*.ts",
+              "libs/shell-services/src/**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

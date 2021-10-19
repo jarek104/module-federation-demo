@@ -6,7 +6,7 @@ const share = mf.share;
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.base.json'),
-  [/* mapped paths to share */]);
+  ['@mfd/shell-services']);
 
 module.exports = {
   output: {
@@ -35,6 +35,7 @@ module.exports = {
         "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
         "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
+
         ...sharedMappings.getDescriptors()
       })
         
@@ -42,3 +43,4 @@ module.exports = {
     sharedMappings.getPlugin()
   ],
 };
+// "@mfd/shell-services": { singleton: true },
