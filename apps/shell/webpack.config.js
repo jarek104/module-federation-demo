@@ -28,7 +28,7 @@ module.exports = {
         "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
         "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
         "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        "@mfd/shell-services": { singleton: true },
+
 
         ...sharedMappings.getDescriptors()
       })
@@ -37,3 +37,4 @@ module.exports = {
     sharedMappings.getPlugin()
   ],
 };
+// "@mfd/shell-services": { singleton: true },
